@@ -1,0 +1,14 @@
+.themePreview {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.logo {
+  width: 14px;
+  height: auto;
+  color: white;
+}
