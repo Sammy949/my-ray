@@ -43,7 +43,7 @@
     "react": "19.0.0",
     "react-color": "^2.19.3",
     "react-dom": "19.0.0",
-    "shiki": "^1.0.0",
+    "shiki": "^3.9.2",
     "sonner": "^2.0.1",
     "tailwind-merge": "^2.3.0",
     "url-loader": "^4.1.1"
