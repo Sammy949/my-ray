@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import getWasm from "shiki/wasm";
 import { highlighterAtom } from "./store";
 import { useAtom } from "jotai";
@@ -25,8 +25,11 @@ import FormatButton from "./components/FormatCodeButton";
 
 export function Code() {
   const [highlighter, setHighlighter] = useAtom(highlighterAtom);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+
     getHighlighterCore({
       themes: [shikiTheme, tailwindLight, tailwindDark],
       langs: [LANGUAGES.javascript.src(), LANGUAGES.tsx.src(), LANGUAGES.swift.src(), LANGUAGES.python.src()],
@@ -46,7 +49,7 @@ export function Code() {
         </NavigationActions>
         <div className={styles.app}>
           <NoSSR>
-            {highlighter && <Frame />}
+            {mounted && highlighter && <Frame />}
             <Controls />
           </NoSSR>
         </div>

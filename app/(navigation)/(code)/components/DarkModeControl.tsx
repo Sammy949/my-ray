@@ -5,7 +5,7 @@ import useHotkeys from "../../../../utils/useHotkeys";
 import ControlContainer from "./ControlContainer";
 import { Switch } from "@/components/switch";
 
-const BackgroundControl: React.FC = () => {
+const DarkModeControl: React.FC = () => {
   const [darkMode, setDarkMode] = useAtom(darkModeAtom);
 
   const toggleDarkMode = useCallback(() => setDarkMode((old) => !old), [setDarkMode]);
@@ -19,4 +19,4 @@ const BackgroundControl: React.FC = () => {
   );
 };
 
-export default BackgroundControl;
+export default DarkModeControl;

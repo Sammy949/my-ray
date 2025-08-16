@@ -13,10 +13,10 @@ import { useEffect, useState } from "react";
 const FormatButton: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useAtom(selectedLanguageAtom);
   const [code, setCode] = useAtom(codeAtom);
-  const [isClient, setIsClient] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setMounted(true);
   }, []);
 
   const handleFormatCode = () => {
@@ -58,7 +58,8 @@ const FormatButton: React.FC = () => {
     handleFormatCode();
   });
 
-  if (!isClient) {
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
     return null;
   }
 

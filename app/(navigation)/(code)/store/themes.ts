@@ -1243,30 +1243,20 @@ export const THEMES: { [index: string]: Theme } = {
 
 const themeAtom = atomWithHash<Theme>(
   "theme",
-  (() => {
-    if (typeof window !== "undefined") {
-      try {
-        // Check if theme is stored in localStorage
-        const codeTheme = localStorage.getItem("codeTheme");
-        if (codeTheme && codeTheme in THEMES) {
-          return THEMES[codeTheme as keyof typeof THEMES];
-        }
-      } catch (error) {
-        console.log("Could not get theme from localStorage", error);
-      }
-    }
-    return THEMES.candy; // Fallback to default theme
-  })(),
+  THEMES.candy, // Always use consistent default to prevent hydration mismatch
   {
     serialize(value) {
       return Object.keys(THEMES).find((key) => THEMES[key].name.toLowerCase() === value.name.toLowerCase()) || "";
     },
     deserialize(key) {
       if (key && key in THEMES) {
-        try {
-          localStorage.setItem("codeTheme", key);
-        } catch (error) {
-          console.log("Could not set theme in localStorage", error);
+        // Only access localStorage on client side
+        if (typeof window !== "undefined") {
+          try {
+            localStorage.setItem("codeTheme", key);
+          } catch (error) {
+            console.log("Could not set theme in localStorage", error);
+          }
         }
         return THEMES[key as keyof typeof THEMES];
       } else {

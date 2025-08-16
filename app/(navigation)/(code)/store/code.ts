@@ -103,7 +103,8 @@ export const selectedLanguageAtom = atom(
   },
 );
 
-export const codeExampleAtom = atom<CodeSample | null>(CODE_SAMPLES[Math.floor(Math.random() * CODE_SAMPLES.length)]);
+// Fix hydration issue by using a stable initial value and updating on mount
+export const codeExampleAtom = atom<CodeSample | null>(null);
 
 export const isCodeExampleAtom = atom<boolean>(
   (get) => !!CODE_SAMPLES.find((codeSample) => codeSample.code === get(codeAtom)),
@@ -159,4 +160,11 @@ codeAtom.onMount = (setValue) => {
   const code = getUserInputtedCodeFromHash();
 
   if (code) setValue(code);
+};
+
+// Set random code example on mount to prevent hydration issues
+codeExampleAtom.onMount = (setValue) => {
+  if (!isSSR()) {
+    setValue(CODE_SAMPLES[Math.floor(Math.random() * CODE_SAMPLES.length)]);
+  }
 };

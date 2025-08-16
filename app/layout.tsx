@@ -7,7 +7,6 @@ import { TooltipProvider } from "@/components/tooltip";
 import { Viewport } from "next";
 import { Log } from "./log";
 import { Toaster } from "@/components/toast";
-import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500"], display: "swap" });
 
