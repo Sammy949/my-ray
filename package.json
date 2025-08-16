@@ -61,7 +61,7 @@
     "eslint-config-next": "15.2.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
-    "postcss": "^8.4.38",
+    "postcss": "^8.5.6",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.2"
   },
