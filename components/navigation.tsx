@@ -15,14 +15,16 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import Link from "next/link";
 import { cn } from "@/utils/cn";
 import CodeImagesIcon from "@/app/assets/code-images.svg";
-import IconMakerIcon from "@/app/assets/icon-maker.svg";
-import SnippetExplorerIcon from "@/app/assets/snippet-explorer.svg";
-import PresetExplorerIcon from "@/app/assets/preset-explorer.svg";
-import QuicklinkExplorerIcon from "@/app/assets/quicklink-explorer.svg";
-import PromptExplorerIcon from "@/app/assets/prompt-explorer.svg";
-import ThemeExplorerIcon from "@/app/assets/theme-explorer.svg";
+// Remove all deleted feature icon imports
+// import IconMakerIcon from "@/app/assets/icon-maker.svg";
+// import SnippetExplorerIcon from "@/app/assets/snippet-explorer.svg";
+// import PresetExplorerIcon from "@/app/assets/preset-explorer.svg";
+// import QuicklinkExplorerIcon from "@/app/assets/quicklink-explorer.svg";
+// import PromptExplorerIcon from "@/app/assets/prompt-explorer.svg";
+// import ThemeExplorerIcon from "@/app/assets/theme-explorer.svg";
 import { Button } from "./button";
 
+// Simplified links array with only Code Images feature
 const links = [
   {
     href: "/",
@@ -30,42 +32,7 @@ const links = [
     description: "Create beautiful images of your code",
     icon: CodeImagesIcon,
   },
-  {
-    href: "/icon",
-    label: "Icon Maker",
-    description: "Create beautiful icons",
-    icon: IconMakerIcon,
-  },
-  {
-    href: "/prompts",
-    label: "Prompts",
-    description: "Explore AI Prompts for Raycast",
-    icon: PromptExplorerIcon,
-  },
-  {
-    href: "/presets",
-    label: "Presets",
-    description: "Explore AI Presets for Raycast",
-    icon: PresetExplorerIcon,
-  },
-  {
-    href: "/quicklinks",
-    label: "Quicklinks",
-    description: "Explore Raycast Quicklinks",
-    icon: QuicklinkExplorerIcon,
-  },
-  {
-    href: "/snippets",
-    label: "Snippets",
-    description: "Browse and import Raycast Snippets",
-    icon: SnippetExplorerIcon,
-  },
-  {
-    href: "/themes",
-    label: "Themes",
-    description: "Browse and import Raycast Themes",
-    icon: ThemeExplorerIcon,
-  },
+  // All other features removed
 ];
 
 export function Navigation() {
@@ -99,31 +66,113 @@ export function Navigation() {
             <ChevronLeftIcon className="w-4 h-4 shrink-0" />
           </Link>
         </Button>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-2">
+          <RaycastLogoNegIcon className="w-6 h-6" />
+          <span className="font-semibold text-sm">ray.so</span>
+        </Link>
+      </div>
+
+      <div className="flex-1" />
+
+      <div className="flex items-center gap-2">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="transparent" size="medium" className="text-gray-11 hover:text-white">
+              <BrandGithubIcon className="w-4 h-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem asChild>
+              <Link href="https://github.com/raycast/extensions" target="_blank" rel="noopener noreferrer">
+                Extensions
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="https://github.com/raycast/raycast-themes" target="_blank" rel="noopener noreferrer">
+                Themes
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="https://github.com/raycast/raycast-snippets" target="_blank" rel="noopener noreferrer">
+                Snippets
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="https://github.com/raycast/raycast-quicklinks" target="_blank" rel="noopener noreferrer">
+                Quicklinks
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="https://github.com/raycast/raycast-prompts" target="_blank" rel="noopener noreferrer">
+                Prompts
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="https://github.com/raycast/raycast-presets" target="_blank" rel="noopener noreferrer">
+                Presets
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="transparent" className="py-1 pl-1 pr-2 gap-2 data-[state=open]:bg-gray-4 text-gray-12">
-              {activeLink.icon && <activeLink.icon className="w-6 h-6" />}
-              <span className="text-[15px] font-medium">{activeLink.label}</span>
+            <Button variant="transparent" size="medium" className="text-gray-11 hover:text-white">
+              <BrandSlackIcon className="w-4 h-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem asChild>
+              <Link href="https://raycast.com/slack" target="_blank" rel="noopener noreferrer">
+                Join our Slack
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="transparent" size="medium" className="text-gray-11 hover:text-white">
+              <BrandXIcon className="w-4 h-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem asChild>
+              <Link href="https://x.com/raycastapp" target="_blank" rel="noopener noreferrer">
+                Follow us on X
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="transparent" size="medium" className="text-gray-11 hover:text-white">
+              <BrandYoutubeIcon className="w-4 h-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem asChild>
+              <Link href="https://www.youtube.com/@raycastapp" target="_blank" rel="noopener noreferrer">
+                Watch on YouTube
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="transparent" size="medium" className="text-gray-11 hover:text-white">
               <ChevronDownIcon className="w-4 h-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="p-2 gap-1.5 flex flex-col">
-            {links.map((link) => (
-              <DropdownMenuItem
-                key={link.href}
-                onSelect={() => router.push(link.href)}
-                className="pl-[10px] pr-6 py-2 group"
-              >
-                <div className="flex gap-3 items-center">
-                  {link.icon && <link.icon className="w-8 h-8" />}
-                  <div className="flex flex-col leading-none gap-1">
-                    <span className="text-[15px] font-medium text-gray-12">{link.label}</span>
-                    <span className="text-[13px] text-gray-9 group-hover:text-gray-10">{link.description}</span>
-                  </div>
-                </div>
-              </DropdownMenuItem>
-            ))}
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem asChild>
+              <Link href="/about">About</Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
