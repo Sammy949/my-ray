@@ -1255,7 +1255,7 @@ const themeAtom = atomWithHash<Theme>(
         console.log("Could not get theme from localStorage", error);
       }
     }
-    return THEMES.candy; // Fallback to default theme
+    return THEMES.supabase; // Changed default theme from candy to supabase
   })(),
   {
     serialize(value) {
@@ -1270,7 +1270,7 @@ const themeAtom = atomWithHash<Theme>(
         }
         return THEMES[key as keyof typeof THEMES];
       } else {
-        return THEMES.candy;
+        return THEMES.supabase; // Changed default theme from candy to supabase
       }
     },
   },

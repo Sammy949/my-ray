@@ -70,18 +70,16 @@ const ExportButton: React.FC = () => {
       throw new Error("Couldn't find a frame to export");
     }
 
-    const clipboardItem = new ClipboardItem(
-      {
-        "image/png": toBlob(frameContext.current, {
-          pixelRatio: exportSize,
-        }).then((blob) => {
-            if (!blob) {
-              throw new Error("expected toBlob to return a blob");
-            }
-            return blob;
-        }),
-      }
-    );
+    const clipboardItem = new ClipboardItem({
+      "image/png": toBlob(frameContext.current, {
+        pixelRatio: exportSize,
+      }).then((blob) => {
+        if (!blob) {
+          throw new Error("expected toBlob to return a blob");
+        }
+        return blob;
+      }),
+    });
 
     await navigator.clipboard.write([clipboardItem]);
 
@@ -114,7 +112,7 @@ const ExportButton: React.FC = () => {
 
     const params = new URLSearchParams(window.location.hash.replace("#", "?"));
     track("Export", {
-      theme: params.get("theme") || "candy",
+      theme: params.get("theme") || "supabase", // Changed default from candy to supabase
       background: params.get("background") || "true",
       darkMode: params.get("darkMode") || "true",
       padding: params.get("padding") || "64",
