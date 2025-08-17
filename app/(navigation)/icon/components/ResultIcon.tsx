@@ -1,31 +1,31 @@
-import React, { useId } from "react";
-
-import noisePicture from "../assets/noise.inline.png";
-
+import React, { forwardRef, useMemo } from "react";
 import { SettingsType } from "../lib/types";
 
-type PropTypes = {
+// Remove heavy noise image import
+// import noisePicture from "../assets/noise.inline.png";
+
+interface ResultIconProps {
   settings: SettingsType;
   size?: number;
+  IconComponent?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   isPreview?: boolean;
-  // TODO: fix icon type?
-  IconComponent?: React.FC<React.SVGProps<SVGSVGElement>>;
-};
+}
 
-const ResultIcon = React.forwardRef<SVGSVGElement, PropTypes>(
-  ({ settings, size = 512, isPreview, IconComponent }, svgRef) => {
+const ResultIcon = forwardRef<SVGSVGElement, ResultIconProps>(
+  ({ settings, size = 512, IconComponent, isPreview }, ref) => {
+    const rectId = useMemo(() => `rect-${Math.random().toString(36).substring(7)}`, []);
+    const gradientId = useMemo(() => `gradient-${Math.random().toString(36).substring(7)}`, []);
+    const radialGlareGradientId = useMemo(() => `radialGlare-${Math.random().toString(36).substring(7)}`, []);
+    const noiseFilterId = useMemo(() => `noise-${Math.random().toString(36).substring(7)}`, []);
+
     const strokeSize = isPreview ? 0 : settings.backgroundStrokeSize;
     const strokeWidth = isNaN(parseInt(strokeSize.toString())) ? 0 : parseInt(strokeSize.toString());
-
-    const rectId = useId().replace(/:/g, "");
-    const gradientId = useId().replace(/:/g, "");
-    const radialGlareGradientId = useId().replace(/:/g, "");
     const gradientX = settings.backgroundPosition?.split(",")[0];
     const gradientY = settings.backgroundPosition?.split(",")[1];
 
     return (
       <svg
-        ref={svgRef}
+        ref={ref}
         width={size}
         height={size}
         viewBox={`0 0 ${size} ${size}`}
@@ -33,6 +33,16 @@ const ResultIcon = React.forwardRef<SVGSVGElement, PropTypes>(
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
+        <defs>
+          {/* CSS-generated noise filter instead of heavy image */}
+          {settings.backgroundNoiseTexture && (
+            <filter id={noiseFilterId}>
+              <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" />
+              <feColorMatrix type="saturate" values="0" />
+            </filter>
+          )}
+        </defs>
+
         <rect
           id={rectId}
           width={size - strokeSize}
@@ -59,17 +69,21 @@ const ResultIcon = React.forwardRef<SVGSVGElement, PropTypes>(
           />
         ) : null}
 
+        {/* Replace heavy noise image with CSS-generated noise */}
         {settings.backgroundNoiseTexture && !isPreview ? (
-          <image
-            href={noisePicture as unknown as string}
+          <rect
             width={size - strokeSize}
             height={size - strokeSize}
             x={strokeSize / 2}
             y={strokeSize / 2}
-            clipPath="url(#clip)"
-            opacity={`${settings.backgroundNoiseTextureOpacity}%`}
+            rx={settings.backgroundRadius}
+            fill="white"
+            opacity={`${settings.backgroundNoiseTextureOpacity / 100}`}
+            filter={`url(#${noiseFilterId})`}
+            style={{ mixBlendMode: "overlay" }}
           />
         ) : null}
+
         <clipPath id="clip">
           <use xlinkHref={`#${rectId}`} />
         </clipPath>
@@ -124,7 +138,7 @@ const ResultIcon = React.forwardRef<SVGSVGElement, PropTypes>(
         ) : null}
       </svg>
     );
-  }
+  },
 );
 
 ResultIcon.displayName = "ResultIcon";
