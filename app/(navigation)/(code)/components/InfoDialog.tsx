@@ -25,7 +25,7 @@ export function InfoDialog() {
         <div className="flex gap-8">
           <div className="flex flex-col gap-3 flex-1 text-[13px] text-gray-11 leading-relaxed">
             <DialogTitle>About</DialogTitle>
-            <p>my-ray is a lightweight tool for creating clean and beautiful screenshots of your code.</p>
+            <p>My Ray is a lightweight tool for creating clean and beautiful screenshots of your code.</p>
             <p>
               Pick a theme from a range of syntax colors and backgrounds, the language of your code and choose between
               light or dark mode.
@@ -37,24 +37,24 @@ export function InfoDialog() {
             <p>You can also change the image resolution in the export menu.</p>
             <h2 className="text-base font-medium text-gray-12">Contribute</h2>
             <p>
-              The project is Open Source and{" "}
+              The project used to be Open Source and{" "}
               <a href="https://github.com/raycast/ray-so" className="text-gray-12 underline underline-offset-2">
                 available on GitHub
               </a>
-              .
+              . But then, this debloated version, is my doing.
             </p>
             <p>
-              If you have any questions or feedback, please write to us on{" "}
-              <a href="https://x.com/raycast" className="text-gray-12 underline underline-offset-2">
+              If you have any questions or feedback, please write to me on{" "}
+              <a href="https://x.com/I_am_SamY01" className="text-gray-12 underline underline-offset-2">
                 𝕏
               </a>{" "}
               or{" "}
-              <a href="mailto:feedback+rayso@raycast.com" className="text-gray-12 underline underline-offset-2">
-                send us an email
+              <a href="mailto:feedback+urahsamuel0202@gmail.com" className="text-gray-12 underline underline-offset-2">
+                send me an email
               </a>
               .
             </p>
-            <SocialFooter referral="code-image" />
+            <SocialFooter referral="my-ray" />
           </div>
 
           <div className="w-px h-full bg-gray-a3" />

@@ -512,7 +512,7 @@ const DefaultFrame = () => {
               spellCheck={false}
               tabIndex={-1}
             />
-            {fileName.length === 0 ? <span data-ignore-in-export>Untitled-1</span> : null}
+            {fileName.length === 0 ? <span data-ignore-in-export>@I_am_SamY01</span> : null}
           </div>
         </div>
         <Editor />

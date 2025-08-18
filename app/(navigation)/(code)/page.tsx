@@ -4,7 +4,7 @@ import OgPhoto from "./assets/og.png";
 import { Code } from "./code";
 import { BASE_URL } from "@/utils/common";
 
-const title = "Create beautiful images of your code";
+const title = "My Ray | SamY";
 const description =
   "Turn your code into beautiful images. Choose from a range of syntax colors, hide or show the background, and toggle between a dark and light window.";
 const ogUrl = OgPhoto.src;
