@@ -1,0 +1,16 @@
+{
+  "name": "My Ray",
+  "short_name": "My Ray",
+  "description": "My Ray - Code Snippets and More",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#181818",
+  "theme_color": "#181818",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

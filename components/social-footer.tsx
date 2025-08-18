@@ -1,4 +1,5 @@
 import { BrandGithubIcon, BrandXIcon, RaycastLogoNegIcon } from "@raycast/icons";
+import Image from "next/image";
 
 const socialLinks = [
   {
@@ -21,8 +22,7 @@ export function SocialFooter({ referral = "my-ray" }: { referral?: string }) {
           href={`https://samy01.netlify.app/#ref=${referral}`}
           className="flex items-center gap-1.5 text-gray-12 group"
         >
-          {/* <RaycastLogoNegIcon className="w-4 h-4 text-brand" /> */}
-          <span className="text-[13px] font-medium group-hover:underline">Made by SamY</span>
+          <Image width="70" height="70" src={"/logo.png"} alt="Logo" />
         </a>
         <div className="flex gap-3">
           {socialLinks.map((link) => (

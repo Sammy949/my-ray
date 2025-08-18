@@ -11,25 +11,42 @@ import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500"], display: "swap" });
 
-const title = "Ray.so";
-const description = "Ray.so";
+const title = "My Ray";
+const description = "My Ray";
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title: title,
   description: description,
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "32x32" }],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
-    siteName: "Ray.so",
+    siteName: "My Ray",
+    images: [
+      {
+        url: "/favicon.png",
+        width: 32,
+        height: 32,
+        alt: "My Ray Favicon",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@raycast",
+    creator: "@I_am_SamY01",
   },
 };
 
 export const viewport: Viewport = {
   themeColor: "#181818",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -81,7 +81,7 @@ const SupabaseFrame = () => {
               tabIndex={-1}
               size={1}
             />
-            {fileName.length === 0 ? <span>Untitled-1</span> : null}
+            {fileName.length === 0 ? <span data-ignore-in-export>@I_am_SamY01</span> : null}
           </div>
           <span className={styles.supabaseLanguage}>{selectedLanguage?.name}</span>
         </div>
@@ -192,7 +192,7 @@ const TriggerdevFrame = () => {
                 tabIndex={-1}
                 size={1}
               />
-              <span>Untitled-1</span>
+              <span data-ignore-in-export>@I_am_SamY01</span>
             </div>
             <span className={styles.triggerLanguage}>{selectedLanguage?.name}</span>
           </div>
@@ -266,7 +266,7 @@ const MintlifyFrame = () => {
               tabIndex={-1}
               size={1}
             />
-            {fileName.length === 0 ? <span>Untitled-1</span> : null}
+            {fileName.length === 0 ? <span data-ignore-in-export>@I_am_SamY01</span> : null}
           </div>
         </div>
         <Editor />
@@ -459,7 +459,7 @@ const ResendFrame = () => {
               tabIndex={-1}
               size={1}
             />
-            {fileName.length === 0 ? <span>Untitled-1</span> : null}
+            {fileName.length === 0 ? <span data-ignore-in-export>@I_am_SamY01</span> : null}
           </div>
           <span className={styles.resendLanguage}>{selectedLanguage?.name}</span>
         </div>

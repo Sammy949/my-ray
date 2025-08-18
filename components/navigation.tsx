@@ -10,7 +10,7 @@ export function NavigationActions({ children, className }: { children: React.Rea
   return (
     <div
       className={cn(
-        "h-[50px] flex items-center justify-end fixed top-0 right-scrollbar-offset gap-2 z-10 left-44",
+        "h-[50px] flex items-center justify-between fixed top-0 right-scrollbar-offset gap-2 z-10 left-4",
         className,
       )}
     >

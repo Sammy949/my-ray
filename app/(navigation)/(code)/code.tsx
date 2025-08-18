@@ -22,6 +22,8 @@ import ExportButton from "./components/ExportButton";
 import { NavigationActions } from "@/components/navigation";
 import { InfoDialog } from "./components/InfoDialog";
 import FormatButton from "./components/FormatCodeButton";
+import Link from "next/link";
+import Image from "next/image";
 
 export function Code() {
   const [highlighter, setHighlighter] = useAtom(highlighterAtom);
@@ -40,9 +42,16 @@ export function Code() {
     <>
       <FrameContextStore>
         <NavigationActions>
-          <InfoDialog />
-          <FormatButton />
-          <ExportButton />
+          <div className="flex items-center gap-2">
+            <Link href="https://samy01.netlify.app" className="flex items-center gap-2">
+              <Image width="70" height="70" src={"/logo.png"} alt="Logo" />
+            </Link>
+          </div>
+          <div className="flex items-center gap-2">
+            <InfoDialog />
+            <FormatButton />
+            <ExportButton />
+          </div>
         </NavigationActions>
         <div className={styles.app}>
           <NoSSR>

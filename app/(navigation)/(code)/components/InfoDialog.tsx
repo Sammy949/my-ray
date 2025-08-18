@@ -37,9 +37,9 @@ export function InfoDialog() {
             <p>You can also change the image resolution in the export menu.</p>
             <h2 className="text-base font-medium text-gray-12">Contribute</h2>
             <p>
-              The project used to be Open Source and{" "}
+              The project used is Open Source at{" "}
               <a href="https://github.com/raycast/ray-so" className="text-gray-12 underline underline-offset-2">
-                available on GitHub
+                the official Raycast GitHub repository
               </a>
               . But then, this debloated version, is my doing.
             </p>
